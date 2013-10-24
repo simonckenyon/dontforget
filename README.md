@@ -10,20 +10,20 @@ The application has to support multiple users, store necessary data in a databas
 2 Minimal functionality
 
 - User can sign in using unique login and password. This can be hardcoded to a default user list
-– user management functionality is not required. Please create at least one account for user “test” with password “abc123”.
+- User management functionality is not required. Please create at least one account for user 'test' with password 'abc123'.
 - User can view his/her current task list
 - User can check/uncheck any task on their list
 - User can add/remove task
 - All changes should be persistent
-– when a user signs into the system next time they will see changes made during previous session.
-- Each “task” contains a text description and date when the entry was created. Both fields should be displayed in the UI.
+- When a user signs into the system next time they will see changes made during previous session.
+- Each 'task' contains a text description and date when the entry was created. Both fields should be displayed in the UI.
 - Since application can be used to by many users, the application should consider performance
 
 3 Your outputs
 
 Please supply WAR file and all source code. WAR file will be deployed and tested in Tomcat6.x (Java6).
 
-You’re allowed to use any open-source library/framework, but it has to be included into a final WAR file.
+You're allowed to use any open-source library/framework, but it has to be included into a final WAR file.
 
 Please use an open-source in-memory database if needed (e.g. HSQL, H2, SQLite)
 
