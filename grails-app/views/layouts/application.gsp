@@ -44,15 +44,23 @@
 							<li><a href="#">One more separated link</a></li>
 						</ul></li>
 				</ul>
-				<form class="navbar-form navbar-right">
+				<sec:ifNotLoggedIn>
+				<g:form uri="/j_spring_security_check" class="navbar-form navbar-right">
 					<div class="form-group">
-						<input type="text" placeholder="Username" class="form-control">
+						<input type="text" placeholder="Username" class="form-control" name='j_username' id='username'/>
 					</div>
 					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control">
+						<input type="password" placeholder="Password" class="form-control" name='j_password' id='password'/>
 					</div>
 					<button type="submit" class="btn btn-success">Sign in</button>
-				</form>
+				</g:form>
+				</sec:ifNotLoggedIn>
+				<sec:ifLoggedIn>
+				<g:form uri="/j_spring_security_logout" class="navbar-form navbar-right">
+					<p class="navbar-text">Signed in as <sec:username /></p>
+					<button type="submit" class="btn btn-success">Sign out</button>
+				</g:form>
+				</sec:ifLoggedIn>
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
