@@ -10,6 +10,8 @@ class User {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+	
+	static hasMany = [reminders: Reminder]
 
 	static transients = ['springSecurityService']
 
@@ -20,6 +22,7 @@ class User {
 
 	static mapping = {
 		password column: '`password`'
+		reminders sort: 'dateCreated'
 	}
 
 	Set<Role> getAuthorities() {
@@ -38,5 +41,9 @@ class User {
 
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
+	}
+	
+	String toString() {
+		return username
 	}
 }

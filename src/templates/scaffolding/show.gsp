@@ -1,47 +1,48 @@
+
 <% import grails.persistence.Event %>
 <%=packageName%>
 <!doctype html>
 <html>
-	<head>
-		<meta name="layout" content="bootstrap">
-		<g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<div class="row-fluid">
-			
-			<div class="span3">
+<head>
+<meta name="layout" content="application">
+<g:set var="entityName"
+	value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
+<title><g:message code="default.show.label" args="[entityName]" /></title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-3">
 				<div class="well">
 					<ul class="nav nav-list">
 						<li class="nav-header">\${entityName}</li>
-						<li>
-							<g:link class="list" action="list">
+						<li><g:link class="list" action="list">
 								<i class="icon-list"></i>
 								<g:message code="default.list.label" args="[entityName]" />
-							</g:link>
-						</li>
-						<li>
-							<g:link class="create" action="create">
+							</g:link></li>
+						<li><g:link class="create" action="create">
 								<i class="icon-plus"></i>
 								<g:message code="default.create.label" args="[entityName]" />
-							</g:link>
-						</li>
+							</g:link></li>
 					</ul>
 				</div>
 			</div>
-			
-			<div class="span9">
+
+			<div class="col-lg-9">
 
 				<div class="page-header">
-					<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+					<h1>
+						<g:message code="default.show.label" args="[entityName]" />
+					</h1>
 				</div>
 
 				<g:if test="\${flash.message}">
-				<bootstrap:alert class="alert-info">\${flash.message}</bootstrap:alert>
+					<bootstrap:alert class="alert-info">\${flash.message}</bootstrap:alert>
 				</g:if>
 
 				<dl>
-				<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
+					<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
 					allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
 					props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) }
 					Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
@@ -82,7 +83,7 @@
 				</g:form>
 
 			</div>
-
 		</div>
-	</body>
+	</div>
+</body>
 </html>

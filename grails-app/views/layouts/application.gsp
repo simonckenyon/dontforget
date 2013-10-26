@@ -30,19 +30,21 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="${createLink(uri: '/')}">Home</a></li>
-					<li><g:link controller="info" action="about">About</g:link></li>
-					<li><g:link controller="info" action="contact">Contact</g:link></li>
+					<sec:ifLoggedIn>
+						<li><g:link controller="reminder" action="list">Reminder</g:link></li>
+					</sec:ifLoggedIn>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						data-toggle="dropdown">Menu <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
+							<li><g:link controller="info" action="about">About Koala</g:link></li>
+							<li><g:link controller="info" action="learn">About dontforget</g:link></li>
+							<li><g:link controller="info" action="contact">Contact</g:link></li>
+							<sec:ifLoggedIn>
+								<li class="divider"></li>
+								<li><g:link controller="logout">Sign out</g:link></li>
+							</sec:ifLoggedIn>
+						</ul>
+					</li>
 				</ul>
 				<sec:ifNotLoggedIn>
 				<g:form uri="/j_spring_security_check" class="navbar-form navbar-right">
@@ -56,8 +58,7 @@
 				</g:form>
 				</sec:ifNotLoggedIn>
 				<sec:ifLoggedIn>
-				<g:form uri="/j_spring_security_logout" class="navbar-form navbar-right">
-					<p class="navbar-text">Signed in as <sec:username /></p>
+				<g:form uri="/j_spring_security_logout" method="POST" class="navbar-form navbar-right">
 					<button type="submit" class="btn btn-success">Sign out</button>
 				</g:form>
 				</sec:ifLoggedIn>
