@@ -34,29 +34,30 @@
 			</div>
 		</div>
 	</sec:ifNotLoggedIn>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="page-header">
-					<h1>
-						<i class="icon-info-sign"></i> Menu
-					</h1>
-					<div class="padded">
-						<p>Some sort of menu.</p>
+	<sec:ifLoggedIn>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="page-header">
+						<h1>
+							<i class="icon-info-sign"></i> Menu
+						</h1>
+						<div class="padded">
+							<p>Some sort of menu.</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-lg-8">
-				<div class="page-header">
-					<h1>
-						<i class="icon-info-sign"></i> Todo List
-					</h1>
-					<div class="padded">
-						<p>This is where the todo list goes.</p>
+				<div class="col-lg-8">
+					<div class="page-header">
+						<h1>
+							<i class="icon-info-sign"></i> Todo List
+						</h1>
+						<div class="padded">
+							<p>This is where the todo list goes.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<sec:ifLoggedIn></sec:ifLoggedIn>
+	</sec:ifLoggedIn>
 </body>
