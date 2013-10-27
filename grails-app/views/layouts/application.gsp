@@ -48,7 +48,7 @@
 							<li><g:link controller="info" action="contact">Contact</g:link></li>
 							<sec:ifLoggedIn>
 								<li class="divider"></li>
-								<li><g:link controller="logout">Sign out</g:link></li>
+								<li><g:link controller="logout">Sign out <sec:username /></g:link></li>
 							</sec:ifLoggedIn>
 						</ul></li>
 				</ul>
@@ -69,7 +69,7 @@
 				<sec:ifLoggedIn>
 					<g:form uri="/j_spring_security_logout" method="POST"
 						class="navbar-form navbar-right">
-						<button type="submit" class="btn btn-success">Sign out</button>
+						<button type="submit" class="btn btn-success">Sign out <sec:username /></button>
 					</g:form>
 				</sec:ifLoggedIn>
 			</div>

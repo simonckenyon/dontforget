@@ -1,4 +1,4 @@
-<%@ page import="ie.koala.dontforget.Reminder" %>
+<%@ page import="ie.koala.dontforget.Reminder"%>
 <!doctype html>
 <html>
 <head>
@@ -14,7 +14,9 @@
 			<div class="col-lg-3">
 				<div class="well">
 					<ul class="nav nav-list">
-						<li class="nav-header">${entityName}</li>
+						<li class="nav-header">
+							${entityName}
+						</li>
 						<li><g:link class="list" action="list">
 								<i class="icon-list"></i>
 								<g:message code="default.list.label" args="[entityName]" />
@@ -36,7 +38,9 @@
 				</div>
 
 				<g:if test="${flash.message}">
-					<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
+					<bootstrap:alert class="alert-info">
+						${flash.message}
+					</bootstrap:alert>
 				</g:if>
 
 				<g:hasErrors bean="${reminderInstance}">
@@ -51,28 +55,26 @@
 					</bootstrap:alert>
 				</g:hasErrors>
 
-				<fieldset>
-					<g:form class="form-horizontal" action="edit"
-						id="${reminderInstance?.id}"
-						>
-						<g:hiddenField name="version" value="${reminderInstance?.version}" />
-						<fieldset>
-							<f:all bean="reminderInstance" />
-							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">
-									<i class="icon-ok icon-white"></i>
-									<g:message code="default.button.update.label" default="Update" />
-								</button>
-								<button type="submit" class="btn btn-danger"
-									name="_action_delete" formnovalidate>
-									<i class="icon-trash icon-white"></i>
-									<g:message code="default.button.delete.label" default="Delete" />
-								</button>
-							</div>
-						</fieldset>
-					</g:form>
-				</fieldset>
-
+				<g:form class="form-horizontal" action="edit"
+					id="${reminderInstance?.id}">
+					<g:hiddenField name="version" value="${reminderInstance?.version}" />
+					<f:field bean="reminderInstance" property="description" />
+					<f:field bean="reminderInstance" property="checked" />
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+						<f:field bean="reminderInstance" property="user" />
+					</sec:ifAllGranted>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">
+							<i class="icon-ok icon-white"></i>
+							<g:message code="default.button.update.label" default="Update" />
+						</button>
+						<button type="submit" class="btn btn-danger" name="_action_delete"
+							formnovalidate>
+							<i class="icon-trash icon-white"></i>
+							<g:message code="default.button.delete.label" default="Delete" />
+						</button>
+					</div>
+				</g:form>
 			</div>
 		</div>
 	</div>

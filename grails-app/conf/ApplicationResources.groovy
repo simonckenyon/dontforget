@@ -1,5 +1,6 @@
 modules = {
     application {
+		dependsOn 'font-awesome'
 		dependsOn 'scaffolding'
 		dependsOn 'iefix'
 		resource url:'/images/favicon.ico'

@@ -4,6 +4,7 @@ class Reminder {
 	
 	String description
 	Date dateCreated
+	boolean checked
 
 	static belongsTo = [user: User]
 	

@@ -20,9 +20,9 @@ class ReminderController {
 		int count
 		
 		User user = springSecurityService.currentUser
-		log.debug "user=${user}"
-		
 		boolean isAdmin = SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')
+		log.debug "user=${user} isAdmin=${isAdmin}"
+		
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		if (isAdmin) {
 			list = Reminder.list(params)
@@ -35,6 +35,10 @@ class ReminderController {
     }
 
     def create() {
+		User user = springSecurityService.currentUser
+		boolean isAdmin = SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')
+		log.debug "user=${user} isAdmin=${isAdmin}"
+		
 		switch (request.method) {
 		case 'GET':
         	[reminderInstance: new Reminder(params)]
@@ -53,7 +57,16 @@ class ReminderController {
     }
 
     def show() {
-        def reminderInstance = Reminder.get(params.id)
+		User user = springSecurityService.currentUser
+		boolean isAdmin = SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')
+		log.debug "user=${user} isAdmin=${isAdmin}"
+		
+		def reminderInstance
+		if (isAdmin) {
+			reminderInstance = Reminder.get(params.id)
+		} else {
+			reminderInstance = Reminder.findWhere(user: user, id: params.long('id'))
+		}
         if (!reminderInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'reminder.label', default: 'Reminder'), params.id])
             redirect action: 'list'
@@ -64,9 +77,18 @@ class ReminderController {
     }
 
     def edit() {
+		User user = springSecurityService.currentUser
+		boolean isAdmin = SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')
+		log.debug "user=${user} isAdmin=${isAdmin}"
+		
+		def reminderInstance
+		if (isAdmin) {
+			reminderInstance = Reminder.get(params.id)
+		} else {
+			reminderInstance = Reminder.findWhere(user: user, id: params.long('id'))
+		}
 		switch (request.method) {
 		case 'GET':
-	        def reminderInstance = Reminder.get(params.id)
 	        if (!reminderInstance) {
 	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'reminder.label', default: 'Reminder'), params.id])
 	            redirect action: 'list'
@@ -76,7 +98,6 @@ class ReminderController {
 	        [reminderInstance: reminderInstance]
 			break
 		case 'POST':
-	        def reminderInstance = Reminder.get(params.id)
 	        if (!reminderInstance) {
 	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'reminder.label', default: 'Reminder'), params.id])
 	            redirect action: 'list'
@@ -108,7 +129,16 @@ class ReminderController {
     }
 
     def delete() {
-        def reminderInstance = Reminder.get(params.id)
+ 		User user = springSecurityService.currentUser
+		boolean isAdmin = SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')
+		log.debug "user=${user} isAdmin=${isAdmin}"
+		
+		def reminderInstance
+		if (isAdmin) {
+			reminderInstance = Reminder.get(params.id)
+		} else {
+			reminderInstance = Reminder.findWhere(user: user, id: params.long('id'))
+		}
         if (!reminderInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'reminder.label', default: 'Reminder'), params.id])
             redirect action: 'list'
