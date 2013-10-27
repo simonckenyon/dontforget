@@ -54,8 +54,7 @@ grails.project.dependency.resolution = {
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.5"
-
+ 
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.3.2"
@@ -64,5 +63,6 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-core:2.0-RC2"
 		runtime ':twitter-bootstrap:3.0.0'
 		compile ":fields:1.3"
+		compile ":mysql-connectorj:5.1.22.1"
     }
 }

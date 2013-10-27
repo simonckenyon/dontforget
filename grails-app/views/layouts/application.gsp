@@ -25,15 +25,22 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="${createLink(uri: '/')}">${meta(name: 'app.name')}</a>
+				<sec:ifNotLoggedIn>
+					<a class="navbar-brand" href="${createLink(uri: '/')}">
+						${meta(name: 'app.name')}
+					</a>
+				</sec:ifNotLoggedIn>
+				<sec:ifLoggedIn>
+					<g:link controller="reminder" action="list" class="navbar-brand" >${meta(name: 'app.name')}</g:link>
+				</sec:ifLoggedIn>
+
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="${createLink(uri: '/')}">Home</a></li>
+				<ul class="nav navbar-nav"><%--
 					<sec:ifLoggedIn>
 						<li><g:link controller="reminder" action="list">Reminder</g:link></li>
 					</sec:ifLoggedIn>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					--%><li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Menu <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><g:link controller="info" action="about">About Koala</g:link></li>
@@ -43,24 +50,27 @@
 								<li class="divider"></li>
 								<li><g:link controller="logout">Sign out</g:link></li>
 							</sec:ifLoggedIn>
-						</ul>
-					</li>
+						</ul></li>
 				</ul>
 				<sec:ifNotLoggedIn>
-				<g:form uri="/j_spring_security_check" class="navbar-form navbar-right">
-					<div class="form-group">
-						<input type="text" placeholder="Username" class="form-control" name='j_username' id='username'/>
-					</div>
-					<div class="form-group">
-						<input type="password" placeholder="Password" class="form-control" name='j_password' id='password'/>
-					</div>
-					<button type="submit" class="btn btn-success">Sign in</button>
-				</g:form>
+					<g:form uri="/j_spring_security_check"
+						class="navbar-form navbar-right">
+						<div class="form-group">
+							<input type="text" placeholder="Username" class="form-control"
+								name='j_username' id='username' />
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="Password"
+								class="form-control" name='j_password' id='password' />
+						</div>
+						<button type="submit" class="btn btn-success">Sign in</button>
+					</g:form>
 				</sec:ifNotLoggedIn>
 				<sec:ifLoggedIn>
-				<g:form uri="/j_spring_security_logout" method="POST" class="navbar-form navbar-right">
-					<button type="submit" class="btn btn-success">Sign out</button>
-				</g:form>
+					<g:form uri="/j_spring_security_logout" method="POST"
+						class="navbar-form navbar-right">
+						<button type="submit" class="btn btn-success">Sign out</button>
+					</g:form>
 				</sec:ifLoggedIn>
 			</div>
 			<!--/.navbar-collapse -->
