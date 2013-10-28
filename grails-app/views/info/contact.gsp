@@ -7,13 +7,6 @@
 						<i class="icon-info-sign"></i> Contact Information
 					</h1>
 				</div>
-				<div class="padded">
-					<p>
-						For ongoing information about
-						${meta(name:'app.name')}, please check our website <a
-							href="http://koala.ie/">http://koala.ie/</a>.
-					</p>
-				</div>
 			</div>
 		</div>
 		<div class="row">

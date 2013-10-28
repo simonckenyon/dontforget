@@ -82,10 +82,7 @@
 										code="reminder.user.label" default="User" /></label>
 								<div class="col-lg-10">
 									<p class="form-control-static">
-										<g:link controller="user" action="show"
-											id="${reminderInstance?.user?.id}">
-											${reminderInstance?.user?.encodeAsHTML()}
-										</g:link>
+										${reminderInstance?.user?.encodeAsHTML()}
 									</p>
 								</div>
 							</div>

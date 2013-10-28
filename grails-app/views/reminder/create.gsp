@@ -56,7 +56,13 @@
 					<g:form class="form-horizontal" action="create"
 						>
 						<fieldset>
-							<f:all bean="reminderInstance" />
+					<f:field bean="reminderInstance" property="description">
+						<g:textArea name="description" />
+					</f:field>
+					<f:field bean="reminderInstance" property="checked" />
+					<sec:ifAllGranted roles="ROLE_ADMIN">
+						<f:field bean="reminderInstance" property="user" />
+					</sec:ifAllGranted>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

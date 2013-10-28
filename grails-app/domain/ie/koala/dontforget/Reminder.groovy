@@ -9,7 +9,7 @@ class Reminder {
 	static belongsTo = [user: User]
 	
     static constraints = {
-		description blank: false
+		description blank: false, size:0..65535, widget: 'textarea'
     }
 
 }

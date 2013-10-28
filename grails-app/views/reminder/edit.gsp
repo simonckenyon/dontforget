@@ -58,7 +58,9 @@
 				<g:form class="form-horizontal" action="edit"
 					id="${reminderInstance?.id}">
 					<g:hiddenField name="version" value="${reminderInstance?.version}" />
-					<f:field bean="reminderInstance" property="description" />
+					<f:field bean="reminderInstance" property="description">
+						<g:textArea name="description" />
+					</f:field>
 					<f:field bean="reminderInstance" property="checked" />
 					<sec:ifAllGranted roles="ROLE_ADMIN">
 						<f:field bean="reminderInstance" property="user" />

@@ -19,22 +19,5 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-4">
-				<h2><i class="icon-ok-circle"></i> Sign Up</h2>
-				<p>Sign up and start using dontforget today!</p>
-			</div>
-			<div class="col-lg-4">
-				<h2><i class="icon-ok-circle"></i> Use it to remember birthdays</h2>
-				<p>Now you will never forget those important momemnts.</p>
-			</div>
-			<div class="col-lg-4">
-				<h2><i class="icon-ok-circle"></i> Use it to record those tasks that are so easy to forget</h2>
-				<p>On the way home will you...</p>
-				<p>In the hustle and bustle of modern life it is so easy to
-					forget requests like these. With dontforget, this will never happen
-					again.</p>
-			</div>
-		</div>
 	</div>
 </body>
