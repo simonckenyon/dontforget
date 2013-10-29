@@ -166,7 +166,7 @@ environments {
 				'org.hibernate',
 				'net.sf.ehcache.hibernate'
 			]
-			debug additivity: false, devfile: [
+			debug additivity: false, prodfile: [
 				'ie.koala.dontforget.DebugFilters'
 			]
 		}
