@@ -2,7 +2,7 @@ package ie.koala.dontforget
 
 class User {
 
-	transient springSecurityService
+	def springSecurityService
 
 	String username
 	String password
